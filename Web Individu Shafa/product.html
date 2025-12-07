@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="notif-overlay" class="notif-overlay"><div id="notif-box" class="notif-box"><i id="notif-icon" class="fas fa-check-circle notif-icon"></i><span id="notif-msg" class="notif-msg">Pesan</span><button class="btn-notif" onclick="closeNotif()">Oke</button></div></div>
+    <header>
+        <div class="logo">Prep<span class="text-kuning">Box</span> 🥦</div>
+        <div class="nav-menu">
+            <a href="cart.html" id="nav-cart-icon" class="cart-wrap"><i class="fas fa-shopping-cart"></i><span id="cart-count" class="cart-badge">0</span></a>
+            <a href="profile.html" id="profile-btn-header" class="profile-btn-header"><i class="fas fa-user-circle"></i></a>
+            <button id="btn-login-nav" class="btn-auth btn-login" onclick="location.href='index.html'">Login di Home</button>
+        </div>
+    </header>
+    <div class="container" style="margin-top: 30px;">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Menu</a>
+        <div class="detail-box">
+            <div class="detail-img"><img id="dp-img" src="" alt="Produk"></div>
+            <div class="detail-info">
+                <h1 id="dp-name" class="detail-title">Nama Produk</h1>
+                <div id="dp-price" class="detail-price">Rp 0</div>
+                <div class="info-block"><h4>Deskripsi</h4><p id="dp-desc">Deskripsi produk.</p></div>
+                <div class="info-block"><h4>📦 Isi Dalam Box</h4><p id="dp-bahan">-</p></div>
+                <div class="info-block"><h4>👨‍🍳 Cara Masak</h4><p id="dp-masak">-</p></div>
+                <button id="btn-beli-detail" class="btn-full"><i class="fas fa-plus"></i> Masukkan Keranjang</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
