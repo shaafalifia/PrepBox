@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Prep<span class="text-kuning">Box</span> 🥦</div>
+        <div class="nav-menu">
+            <a href="cart.html" class="back-link" style="margin:0;">Kembali ke Keranjang</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="judul-section" style="text-align: left; margin-top: 10px;">Checkout Pembayaran</h2>
+
+        <div class="payment-wrapper">
+            <div class="pay-left">
+                <div class="pay-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Data Pengiriman</h3>
+                    <div class="form-group">
+                        <label>Nama Penerima</label>
+                        <input type="text" id="pay-name" placeholder="Nama Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label>No. WhatsApp/Telepon</label>
+                        <input type="tel" id="pay-phone" placeholder="+628...">
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Lengkap</label>
+                        <textarea id="pay-address" rows="3" placeholder="Jalan, No Rumah..."></textarea>
+                    </div>
+                </div>
+                <div class="pay-card">
+                    <h3><i class="fas fa-wallet"></i> Metode Pembayaran</h3>
+                    <div class="method-box" id="method-bank" onclick="selectMethod('bank')">
+                        <i class="fas fa-university"></i>
+                        <div>Transfer Bank (BCA/Mandiri)</div>
+                    </div>
+                    <div class="method-box" id="method-qris" onclick="selectMethod('qris')">
+                        <i class="fas fa-qrcode"></i>
+                        <div>QRIS (GoPay/Dana/OVO)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pay-right">
+                <h3 style="margin-bottom:20px; color:var(--hijau);">Ringkasan Pesanan</h3>
+                <div id="payment-prod-list"></div>
+                
+                <div class="summary-item" style="margin-top: 15px;"><span>Subtotal</span><span id="pay-subtotal">Rp 0</span></div>
+                <div class="summary-item"><span>Ongkir Flat</span><span>Rp 5.000</span></div>
+                <div class="summary-total"><span>Total Tagihan</span><span id="pay-total">Rp 0</span></div>
+                
+                <button id="btn-confirm-pay" class="btn-pay-now" onclick="processPayment()" disabled>Pilih Metode Dulu</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pay-simulation-overlay" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="document.getElementById('pay-simulation-overlay').style.display='none'">&times;</span>
+            
+            <div id="sim-va" style="display: none;">
+                <h2 style="color:var(--hijau);">Virtual Account</h2>
+                <div class="pay-timer"><i class="fas fa-clock"></i> Menunggu: 23:59:59</div>
+                
+                <p style="text-align:center; color:#555;">Silakan transfer ke Nomor VA berikut:</p>
+                <div class="va-number">8801 2938 4491 2201</div>
+                
+                <div class="step-list">
+                    <strong>Cara Pembayaran:</strong><br>
+                    1. Buka M-Banking BCA/Mandiri/BRI.<br>
+                    2. Pilih menu Transfer > Virtual Account.<br>
+                    3. Masukkan nomor VA di atas.<br>
+                    4. Simpan bukti transfer.
+                </div>
+            </div>
+            
+            <div id="sim-qris" style="display: none;">
+                <h2 style="color:var(--hijau);">Scan QRIS</h2>
+                <div class="pay-timer"><i class="fas fa-clock"></i> Sisa Waktu: 14:59</div>
+                
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" class="qris-img">
+                
+                <p style="text-align:center; font-size:14px; margin-top:15px; color:#555;">
+                    Scan menggunakan GoPay, OVO, Dana, atau ShopeePay.
+                </p>
+            </div>
+            
+            <button class="btn-modal" onclick="confirmPayment()">Cek Status Pembayaran</button>
+        </div>
+    </div>
+    
+    <div id="notif-overlay" class="notif-overlay">
+        <div id="notif-box" class="notif-box">
+            <i id="notif-icon" class="fas fa-check-circle notif-icon"></i>
+            <span id="notif-msg" class="notif-msg">Pesan</span>
+            <button class="btn-notif" onclick="closeNotif()">Oke</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
